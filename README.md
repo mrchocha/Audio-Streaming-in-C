@@ -19,7 +19,7 @@ You need to install ` gcc ` in ubuntu or macOS to run the code. Another dependen
 make install
 ```
 
-# Running
+# Compile and Running
 To compile bith `client` and `server` run command 
 ```
 make
@@ -54,4 +54,4 @@ make sure that poert1 and port2 are same for both client and server.
 * Jeet Karia [JeetKaria06](https://github.com/JeetKaria06)
 
 # Words from Authors
-Thanks to Prof. Jitendra Bhtiya and T.A. Parswa Shah (https://github.com/parshwa1999) for your valuable guidence.
+Thanks to Prof. Jitendra Bhtiya and T.A. [Parshwa Shah](https://github.com/parshwa1999) for your valuable guidence.
