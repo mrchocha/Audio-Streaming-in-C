@@ -34,6 +34,7 @@ void error(char *msg)
 	perror(msg);
 	exit(1);
 }
+
 /*
 *	Datagram : sends song packets along with seqno, name of the file, and timestamps for latency calculation
 */
