@@ -45,7 +45,7 @@ Client side when executed, first binds with the provided ```IP-address``` and ``
 
 At any time of execution, if server sends data packet type as ```ERROR``` then client stops execution and again asks for song to play. When users executes ```-play``` command, it will be sent to server with data type as ```REQ```, and also a separate VLC thread is created which keeps playing the requested song. The reason for creating separate thread for song playing is that, if user wants to see the list of songs when some is song is already playing, then it must not interrupt the already playing song. Also, when user enters ```-list``` command, it listens on another port of the same ```IP-address``` and receives the list of songs that server is sending infinitely. Also, client computes jitter and average latency which is explained more [here](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Measuring_Jitter_And_Average_Latency.md#jitter). And the computed jitter and average latency is shown after the whole song is buffered at the client. 
 
-#Measuring jitter and Average Latency
+# Measuring jitter and Average Latency
 
 # Jitter
 Jitter is the variation in the latency of the received packets.
