@@ -1,7 +1,7 @@
 
 CC = gcc
 
-.PHONY: all server client clean
+.PHONY: all install server client clean
 
 all: server client
 	make install
