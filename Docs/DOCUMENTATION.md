@@ -26,9 +26,9 @@ The fields with name </br></br>
 `tv` is timestamp for data packet, which denotes the time when packet was sent.	</br></br>
 
 ## Server Side
-At the server side first it creates the nesasory bindings for socket,ip-address and ports etc. here server uses "UDP protocol" as socket type. then it waits for any client for handshake request with type `REQ`. if connection is sucessfull then it waits for client to send a file name to be transfered wuth packet type `DATA`. now if file is not present at serverside then server sends packet with type `ERROR`. if filwe is present then it sends data of file in chunks of size `MAXLINE` with packet type `DATA` and respective `seq_no` starting from 0. After transfarinig each packet it waits for aacknowledgement with packet type `ACK`. if ack is correct then it transfers next chunck else it retransfers the previous chunk which is called stop and wailt protocol. this all will hepen at `port1`.
+At the server side first it creates the necessary bindings for socket,ip-address and ports etc. Here server uses "UDP protocol" as socket type, then it waits for any client for handshake request with type `REQ`, if connection is successful then it waits for client to send a file name to be transfered wuth packet type `DATA`. Now if file is not present at serverside then server sends packet with type `ERROR`. If file is present then it sends data of file in chunks of size `MAXLINE` with packet type `DATA` and respective `seq_no` starting from 0. After transferring each packet it waits for acknowledgement with packet type `ACK`. If ack is correct then it transfers next chunk else it retransmits the previous chunk which is called stop and wailt protocol. This all will happen at `port1`.
 </br></br>
-Another thread is created to transfer data for request of list of avalable songs files at `port2`. here server from port2 check list of songs  and sends it to perticulor client infinitly. Thread is created because list request should not interrupt the main transmission process.  
+Another thread is created to transfer data for request of list of avalable songs' files at `port2`. Here server at port2 gives list of songs infinitely. Thread is created because list request should not interrupt the main song transmission process.  
 
 ## Client Side
 
