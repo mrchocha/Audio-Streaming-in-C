@@ -2,10 +2,10 @@
 Audio streaming is done using customized protocol to stream the audio from server to client. UDP protocol is used to transfer data and reliability is added by stop-and-wait protocol. Client has functionality to play, pause and resume the song.
 
 ## Table Of Contents
-- [Documentation](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Documentation.md)
+- [Documentation](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Documentation.md#common-notations)
 - [Installing Dependencies](#installing-dependencies)
 - [Compile and Running](#compile-and-running)
-- [Measuring Jitter and Average latency](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Measuring_Jitter_And_Average_Latency.md)
+- [Measuring Jitter and Average latency](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Measuring_Jitter_And_Average_Latency.md#jitter)
 - [Authors](#authors)
 - [Words from Authors](#words-from-authors)
 - [References](#references)
