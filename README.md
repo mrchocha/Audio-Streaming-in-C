@@ -20,7 +20,7 @@ make install
 ```
 
 # Compile and Running
-To compile bith `client` and `server` run command 
+To compile both `client` and `server` run command 
 ```
 make
 ```
