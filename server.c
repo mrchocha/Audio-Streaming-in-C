@@ -16,15 +16,14 @@
 #define MAXLINE 1024    
 #define BUFFSIZE 100
 
-#define PORT1 8080   // Used for song transmission
-#define PORT2 8081	 // Used to transmit song lists on the server
-
 #define ERROR 0    	// Represents error
 #define REQ 1		// Represents REQUEST for connection
 #define ENDOFFILE 2	// Represents file is ended
 #define ACK 3		// Represents acknowledgement of a particular sequence packet
 #define DATA 4		// Represents DATA of the song requested
 #define LIST 5		// Represents LIST OF THE SONGS is requested
+
+int PORT1, PORT2;
 
 /*
  * error - wrapper for perror
@@ -34,7 +33,6 @@ void error(char *msg)
 	perror(msg);
 	exit(1);
 }
-
 /*
 *	Datagram : sends song packets along with seqno, name of the file, and timestamps for latency calculation
 */
@@ -58,7 +56,7 @@ struct ListOfSongs
 /*
 *	udp_send_list : sends number of songs and list of song file names using UDP protocol
 */
-void *udp_send_list()
+void *udp_send_list(char *ip_addr)
 {
 	char buffer[BUFFSIZE];
 	char *message = "Hello Client";
@@ -68,7 +66,7 @@ void *udp_send_list()
 
 	// Create a UDP Socket
 	listenfd = socket(AF_INET, SOCK_DGRAM, 0);
-	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	servaddr.sin_addr.s_addr = inet_addr(ip_addr);
 	servaddr.sin_port = htons(PORT2);
 	servaddr.sin_family = AF_INET;
 
@@ -96,10 +94,23 @@ void *udp_send_list()
 	pthread_exit(NULL);
 }
 
-int main(int argc, char **argv)
+void usage()
 {
+	printf("./server <ip-address> <port-no-1> <port-no-2>\n");
+	printf("<port-no-1> - This port is for song transmission.\n");
+	printf("<port-no-2> - This port is for transmitting list of songs available on the server side.\n");
+	exit(8);
+}
+
+int main(int argc, char **argv)
+{	
+	if(argc<4)
+	{
+		usage();
+	}
+	PORT1 = atoi(argv[2]);
+	PORT2 = atoi(argv[3]);
 	int sockfd;					   /* socket */
-	int portno;					   /* port to listen on */
 	int clientlen;				   /* byte size of client's address */
 	struct sockaddr_in serveraddr; /* server's addr */
 	struct sockaddr_in clientaddr; /* client addr */
@@ -108,7 +119,7 @@ int main(int argc, char **argv)
 	int optval;					   /* flag value for setsockopt */
 	int n;						   /* message byte size */
 	struct Datagram data;
-	portno = (PORT1);
+	
 
 	/* 
    	* socket: create the parent socket 
@@ -126,8 +137,8 @@ int main(int argc, char **argv)
    	*/
 	bzero((char *)&serveraddr, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
-	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	serveraddr.sin_port = htons((unsigned short)portno);
+	serveraddr.sin_addr.s_addr = inet_addr(argv[1]);
+	serveraddr.sin_port = htons(PORT1);
 
 	/* 
    	* bind: associate the parent socket with a port 
@@ -140,7 +151,7 @@ int main(int argc, char **argv)
 	* List of songs thread: A thread is created which will infinitely send number of songs and list of file names on PORT2 
    	*/
    	pthread_t pthread;
-	pthread_create(&pthread, NULL, udp_send_list, NULL);
+	pthread_create(&pthread, NULL, udp_send_list, argv[1]);
 	
 	/*
 	* 	Infinitely accepts name of the file to be played from client side and sending that file packets to client side 
@@ -172,7 +183,7 @@ int main(int argc, char **argv)
      	* Opens file name received and shows error if it doesn't exist 
      	*/
 		FILE *fp, *fp2;
-
+		printf("Client requested: %s\n", data.filename);
 		fp = fopen(data.filename, "r");
 		if (fp == NULL)
 		{
@@ -233,6 +244,6 @@ int main(int argc, char **argv)
 			cnt++;
 		}
 
-		printf("Hello message sent.\n");
+		printf("Song Buffered to the Client side.\n", data.filename);
 	}
 }
