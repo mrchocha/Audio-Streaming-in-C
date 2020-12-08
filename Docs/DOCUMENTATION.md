@@ -25,7 +25,22 @@ The fields with name </br></br>
 `buffer` is responsible for containing tha actual data of requested file/song. </br></br>
 `tv` is timestamp for data packet, which denotes the time when packet was sent.	</br></br>
 
-# Server Side
+## Server Side
 At the server side first it creates the nesasory bindings for socket,ip-address and ports etc. here server uses "UDP protocol" as socket type. then it waits for any client for handshake request with type `REQ`. if connection is sucessfull then it waits for client to send a file name to be transfered wuth packet type `DATA`. now if file is not present at serverside then server sends packet with type `ERROR`. if filwe is present then it sends data of file in chunks of size `MAXLINE` with packet type `DATA` and respective `seq_no` starting from 0. After transfarinig each packet it waits for aacknowledgement with packet type `ACK`. if ack is correct then it transfers next chunck else it retransfers the previous chunk which is called stop and wailt protocol. this all will hepen at `port1`.
 </br></br>
 Another thread is created to transfer data for request of list of avalable songs files at `port2`. here server from port2 check list of songs  and sends it to perticulor client infinitly. Thread is created because list request should not interrupt the main transmission process.  
+
+## Client Side
+
+Client side when executed gives list of songs initially that are available on the server side. This transmission of songs' list is done on a separate port so that it doesn't conflicts with the port that transmits the actual song. And there are some commands which user can write for different functionalities, and they are as follows:
+
+```
+==================== COMMANDS ======================
+-play song.mp3/.wav/.mp4 : to play song with name song.  
+-pause : pause the song. 
+-resume :resume the song. 
+-list : get the list of all songs from server side
+-help :show the details of all commads
+```
+
+When user wants to play the song, a separate VLC thread is created which keeps playing the requested song. The reason for creating separate thread for song playing is that, if user wants to see the list of songs when some is song is already playing, then it must not interrupt the already playing song. Also, when user enters ```-list``` command, it listens on another port of the same ```IP-address``` and receives the list of songs that server is sending infinitely. Also, client computes jitter and average latency which is explained more [here](https://github.com/mrchocha/Audio-Streaming-in-C/blob/main/Docs/Measuring_Jitter_And_Average_Latency.md#jitter). And the computed jitter and average latency is shown after the whole song is buffered at the client. 
