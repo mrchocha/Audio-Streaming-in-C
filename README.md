@@ -54,12 +54,9 @@ make sure that port1 and port2 are same for both client and server.
 * Jeet Karia [JeetKaria06](https://github.com/JeetKaria06)
 
 # Words from Authors
-Special Thanks to Prof. Jitendra Bhatiya and T.A. [Parshwa Shah](https://github.com/parshwa1999) for your valuable guidence.
+Special Thanks to Prof. Jitendra Bhatia and Teaching Assitant [Parshwa Shah](https://github.com/parshwa1999) for their valuable guidence.
 
 # References 
-* [geeks for geeks](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
+* [Geeks For Geeks](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
 * [libvlc documentation](https://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html)
-
-
-# Thank you!!
 
