@@ -12,7 +12,7 @@ Audio streaming is done using customized protocol to stream the audio from serve
 
 ## Documentation
 
-Refer Docs [here](https://github.com/mrchocha/Audio-Streaming-in-C/tree/main/Docs#common-notations).
+Refer docs [here](https://github.com/mrchocha/Audio-Streaming-in-C/tree/main/Docs#common-notations).
 
 ## Installing Dependencies
 You must have ` gcc ` on your ubuntu or macOS to run the code. Other dependencies are ` libvlc ` and ` pthread ` libraries and `vlc media player`. To install them, run 
