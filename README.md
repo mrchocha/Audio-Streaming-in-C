@@ -14,7 +14,7 @@ Audio streaming is done using customized protocol to stream the audio from serve
 
 
 # Installing
-You need to install ` gcc ` in ubuntu or macOS to run the code. Another dependencies are ` libvlc ` and ` pthread ` librarys and `vlc media player`. Now to install it, run command
+You must have ` gcc ` on your ubuntu or macOS to run the code. Other dependencies are ` libvlc ` and ` pthread ` libraries and `vlc media player`. To install them, run 
 ```
 make install
 ```
