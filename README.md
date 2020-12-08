@@ -46,7 +46,7 @@ Now to run `client` run command
 ```
 
 i.e. `./server localhost 8080 8081`, `./client localhost 8080 8081` 
-make sure that poert1 and port2 are same for both client and server.
+make sure that port1 and port2 are same for both client and server.
 
 
 # Authors
@@ -59,4 +59,7 @@ Special Thanks to Prof. Jitendra Bhtiya and T.A. [Parshwa Shah](https://github.c
 # References 
 * [geeks for geeks](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
 * [libvlc documentation](https://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html)
+
+
+# Thank you!!
 
