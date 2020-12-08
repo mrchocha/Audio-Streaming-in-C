@@ -37,18 +37,18 @@ make server
 
 Now to run `server` run command
 ```
-./server <ip-address> <port1> <port2>
+./server <ip-address> <port-no-1> <port-no-2>
 ```
 
 Now to run `client` run command
 ```
-./client <ip-address> <port1> <port2>
+./client <ip-address> <port-no-1> <port-no-2>
 ```
 
-i.e. `./server 127.0.0.1 8080 8081`, `./client 127.0.0.1 8080 8081` 
-make sure that port1 and port2 are same for both client and server. </br>
-`<port1>` This port is for song transmission. </br>
-`<port2>` This port is for transmitting list of songs available on the server side.
+> i.e. `./server 127.0.0.1 8080 8081`, `./client 127.0.0.1 8080 8081` 
+> make sure that port1 and port2 are same for both client and server. </br>
+> `<port1>` This port is for song transmission. </br>
+> `<port2>` This port is for transmitting list of songs available on the server side.
 
 
 ## Authors
