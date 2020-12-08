@@ -4,7 +4,6 @@ CC = gcc
 .PHONY: all install server client clean
 
 all: server client
-	make install
 	make server
 	make client
 	
