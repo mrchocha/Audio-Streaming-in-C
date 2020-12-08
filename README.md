@@ -13,13 +13,13 @@ Audio streaming is done using customized protocol to stream the audio from serve
 
 
 
-# Installing Dependencies
+## Installing Dependencies
 You must have ` gcc ` on your ubuntu or macOS to run the code. Other dependencies are ` libvlc ` and ` pthread ` libraries and `vlc media player`. To install them, run 
 ```
 make install
 ```
 
-# Compile and Running
+## Compile and Running
 To compile both `client` and `server` run command 
 ```
 make
@@ -51,14 +51,14 @@ make sure that port1 and port2 are same for both client and server. </br>
 `<port2>` This port is for transmitting list of songs available on the server side.
 
 
-# Authors
+## Authors
 * Rahul Chocha [mrchocha](https://github.com/mrchocha/)
 * Jeet Karia [JeetKaria06](https://github.com/JeetKaria06)
 
-# Words from Authors
+## Words from Authors
 Special Thanks to Prof. Jitendra Bhatia and Teaching Assitant [Parshwa Shah](https://github.com/parshwa1999) for their valuable guidence.
 
-# References 
+## References 
 * [Geeks For Geeks](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
 * [libvlc documentation](https://www.videolan.org/developers/vlc/doc/doxygen/html/group__libvlc.html)
 
