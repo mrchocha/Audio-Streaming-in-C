@@ -10,9 +10,6 @@
 #include <time.h>
 #include <vlc/vlc.h>
 
-#define PORT1 8080	// Used for song transmission
-#define PORT2 8081	// Used to transmit song lists on the server
-
 #define MAXLINE 1024
 #define BUFFSIZE 100
 
@@ -21,6 +18,8 @@
 #define ENDOFFILE 2	// Represents file is ended
 #define ACK 3		// Represents acknowledgement of a particular sequence packet
 #define DATA 4		// Represents DATA of the song requested
+
+int PORT1, PORT2;
 
 /*
 *	Datagram : sends song packets along with seqno, name of the file, and timestamps for latency calculation
@@ -83,7 +82,7 @@ void *func(void)
 /*
 *	udp_receive_list : Executed when user enters "-list" and will accept ListOfSongs from server
 */
-void udp_recieve_list()
+void udp_recieve_list(char *ip_addr)
 {
 	char buffer[BUFFSIZE];
 	char *message = "Hello Server";
@@ -92,7 +91,7 @@ void udp_recieve_list()
 
 	// clear servaddr
 	bzero(&servaddr, sizeof(servaddr));
-	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	servaddr.sin_addr.s_addr = inet_addr(ip_addr);
 	servaddr.sin_port = htons(PORT2);
 	servaddr.sin_family = AF_INET;
 
@@ -124,8 +123,24 @@ void udp_recieve_list()
 	close(sockfd);
 }
 
-int main(int args, char **argv)
+void usage()
 {
+	printf("./client <ip-address> <port-no-1> <port-no-2>\n");
+	printf("<port-no-1> - This port is for song transmission.\n");
+	printf("<port-no-2> - This port is for transmitting list of songs available on the server side.\n");
+	exit(8);
+}
+
+int main(int argc, char **argv)
+{
+	if(argc<4)
+	{
+		usage();
+	}
+
+	PORT1 = atoi(argv[2]);
+	PORT2 = atoi(argv[3]);
+
 	int sockfd;
 	char buffer[MAXLINE];
 	struct Datagram data;
@@ -147,7 +162,7 @@ int main(int args, char **argv)
 	// Filling server information
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_port = htons(PORT1);
-	servaddr.sin_addr.s_addr = INADDR_ANY;
+	servaddr.sin_addr.s_addr = inet_addr(argv[1]);
 
 	int n, len;
 	// Thread for playing song in VLC without interfering with any other process
@@ -158,7 +173,7 @@ int main(int args, char **argv)
 	*/
 	while (1)
 	{
-		udp_recieve_list();
+		udp_recieve_list(argv[1]);
 		memset(&command, 0, sizeof(command));
 		printf("Enter the command: \n");
 		gets(command);
@@ -168,7 +183,7 @@ int main(int args, char **argv)
 		// Returns list of songs
 		if (!strcmp("-list", command))
 		{
-			udp_recieve_list();
+			udp_recieve_list(argv[1]);
 			continue;
 		}
 		// Pauses the song
