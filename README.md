@@ -1,5 +1,5 @@
 # Audio-Streaming-in-C
-We have done audio streaming using customized protocol to stream the audio from server to client. UDP protocol is used to transfer data and reliability is added by stop-and-wait protocol. Client has functionality to play, pause and resume the song.
+Audio streaming is done using customized protocol to stream the audio from server to client. UDP protocol is used to transfer data and reliability is added by stop-and-wait protocol. Client has functionality to play, pause and resume the song.
 
 ## Table Of Contents
 - [Introduction](#introduction)
