@@ -27,5 +27,5 @@ The fields with name </br></br>
 
 # Server Side
 At the server side first it creates the nesasory bindings for socket,ip-address and ports etc. here server uses "UDP protocol" as socket type. then it waits for any client for handshake request with type `REQ`. if connection is sucessfull then it waits for client to send a file name to be transfered wuth packet type `DATA`. now if file is not present at serverside then server sends packet with type `ERROR`. if filwe is present then it sends data of file in chunks of size `MAXLINE` with packet type `DATA` and respective `seq_no` starting from 0. After transfarinig each packet it waits for aacknowledgement with packet type `ACK`. if ack is correct then it transfers next chunck else it retransfers the previous chunk which is called stop and wailt protocol. this all will hepen at `port1`.
-</br>
-Another thread is created to transfer data for request of list of avalable songs files at `port2`. here thread is created because list is 
+</br></br>
+Another thread is created to transfer data for request of list of avalable songs files at `port2`. here server from port2 check list of songs  and sends it to perticulor client infinitly. Thread is created because list request should not interrupt the main transmission process.  
