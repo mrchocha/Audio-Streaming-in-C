@@ -1,4 +1,4 @@
-# Commom notations
+# common notations
 At server/client side it sends/reciecs strectur which has following paremeteres.
 ```C
 struct Datagram
