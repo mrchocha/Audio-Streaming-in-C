@@ -47,3 +47,11 @@ Now to run `client` run command
 
 i.e. `./server localhost 8080 8081`, `./client localhost 8080 8081` 
 make sure that poert1 and port2 are same for both client and server.
+
+
+# Authors
+* Rahul Chocha [mrchocha](https://github.com/mrchocha/)
+* Jeet Karia [JeetKaria06](https://github.com/JeetKaria06)
+
+# Words from Authors
+Thanks to Prof. Jitendra Bhtiya and T.A. Parswa Shah (https://github.com/parshwa1999) for your valuable guidence.
