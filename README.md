@@ -60,7 +60,7 @@ For detailed understanding of jitter and average latency calculation go [here](h
 * Jeet Karia [JeetKaria06](https://github.com/JeetKaria06)
 
 ## Words from Authors
-Special Thanks to Prof. Jitendra Bhatia and Teaching Assitant [Parshwa Shah](https://github.com/parshwa1999) for their valuable guidence.
+Special Thanks to Prof. Jitendra Bhatia and Teaching Assitant [Parshwa Shah](https://github.com/parshwa1999) for their valuable guidance.
 
 ## References 
 * [Geeks For Geeks](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
