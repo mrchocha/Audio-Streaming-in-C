@@ -47,8 +47,8 @@ Now to run `client` run command
 
 > i.e. `./server 127.0.0.1 8080 8081`, `./client 127.0.0.1 8080 8081` 
 > make sure that port1 and port2 are same for both client and server. </br>
-> `<port1>` This port is for song transmission. </br>
-> `<port2>` This port is for transmitting list of songs available on the server side.
+> `<port-no-1>` This port is for song transmission. </br>
+> `<port-no-2>` This port is for transmitting list of songs available on the server side.
 
 
 ## Authors
