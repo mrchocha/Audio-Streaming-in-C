@@ -35,4 +35,4 @@ Now, we need to take summation of the difference terms for all the received data
 Average latency is taking sum of all the latencies of all the received data packets and dividing it by number of received data packets.
 <br>
 
-> ## This quanties tells us about the state of the network.
+> ## This quantities tells us about the state of the network.
